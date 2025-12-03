@@ -1,9 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ================================================================
-#  Helper Functions
-# ================================================================
+
 
 def lcg(n, X0, A, C, m):
     """Generate n Uniform(0,1) random numbers using LCG."""
@@ -28,9 +26,7 @@ def plot_hist(arr, title, bins=30):
     plt.show()
 
 
-# ================================================================
-#  Question 4.1 - LCG with small parameters
-# ================================================================
+#4.1
 
 X0 = 7
 A = 11
@@ -46,14 +42,10 @@ print("Mean =", mean1)
 print("Variance =", var1)
 print("Std Dev =", std1)
 
-# Max period = m when C = 0, A = 11, m = 1024 (NOT achievable because gcd(A, m) != 1)
 print("\nMaximum possible period =", m)
-print("Achieved period =", len(np.unique(u_1024)))
+print("Achieved period =", len(np.unique(u_1024))) 
 
-
-# ================================================================
-#  Question 4.2 - 102,400 samples
-# ================================================================
+#4.2
 
 u_large = lcg(102400, X0, A, C, m)
 plot_hist(u_large, "Q4.2 Histogram (102,400 samples)")
@@ -64,11 +56,7 @@ print("Mean =", mean2)
 print("Variance =", var2)
 print("Std Dev =", std2)
 
-
-# ================================================================
-#  Question 4.4 - Practical LCG parameters
-# ================================================================
-
+#4.4
 X0 = 7
 A = 25214903917
 C = 11
@@ -94,9 +82,7 @@ print("Variance =", var4)
 print("Std Dev =", std4)
 
 
-# ================================================================
-#  Question 4.6 - Inverse Transform Exponential (λ = 3)
-# ================================================================
+#4.6
 
 lam = 3
 u_exp = u_practical_large  # re-use the uniform generator
@@ -111,22 +97,18 @@ print("Variance =", var_exp)
 print("Std Dev =", std_exp)
 
 
-# ================================================================
-#  Question 4.7 - Compare with numpy built-in exponential
-# ================================================================
-
+#4.7
 np.random.seed(5)
 exp_np = np.random.exponential(scale=1/lam, size=102400)
 
 plot_hist(exp_np, "Q4.7 NumPy Exponential (λ = 3)")
 
 mean_np, var_np, std_np = compute_stats(exp_np)
-print("\nQ4.7 NumPy Exponential Stats:")
+print("\nQ4.7 Exponential Stats:")
 print("Mean =", mean_np)
 print("Variance =", var_np)
 print("Std Dev =", std_np)
 
-# Theoretical values
 print("\nTHEORETICAL VALUES for λ = 3:")
 print("Mean =", 1/lam)
 print("Variance =", 1/(lam**2))
