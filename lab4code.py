@@ -11,7 +11,6 @@ def lcg(n, X0, A, C, m):
 
 
 def compute_stats(arr):
-    """Return mean, variance, std deviation."""
     return np.mean(arr), np.var(arr), np.std(arr)
 
 
