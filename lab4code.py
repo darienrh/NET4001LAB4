@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def lcg(n, X0, A, C, m):
-    """Generate n Uniform(0,1) random numbers using LCG."""
     xs = np.zeros(n)
     x = X0
     for i in range(n):
